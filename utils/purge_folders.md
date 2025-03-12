@@ -1,4 +1,5 @@
 # purge-folders.cmd
+### utils
 
 Recursively removes folders spicifed in `folders` variable
 
