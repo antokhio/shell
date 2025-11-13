@@ -1,0 +1,16 @@
+@echo off
+
+:: Check for Administrator privileges
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Requesting administrative privileges...
+    :: Relaunch the script as an administrator and exit the current instance.
+    powershell -command "Start-Process -FilePath '%~f0' -Verb RunAs"
+    exit /b
+)
+
+:: If we've reached this point, the script is running with admin rights.
+echo Running with administrative privileges.
+
+:: Your original command
+start "" "C:\Program Files\vvvv\vvvv_gamma_7.0-win-x64\vvvv.exe" --nuget-path "%~dp0nugets" --open "%~dp0YOUR_PATCH_HERE.vl" --package-repositories "%~dp0\repos"; --export-package-sources %~dp0\nupkg\; 
